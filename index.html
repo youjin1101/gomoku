@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>우리들의 오목</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- 로그인 화면 -->
+    <main id="loginScreen" class="login-container">
+
+        <div class="login-card">
+            <h1>우리들의 오목</h1>
+            <p class="subtitle">친구와 함께 즐기는 온라인 오목</p>
+
+            <form id="loginForm">
+
+                <label for="inviteCode">입장 비밀번호</label>
+                <input
+                    type="password"
+                    id="inviteCode"
+                    placeholder="친구와 공유한 초대 코드"
+                    minlength="20"
+                    required
+                >
+
+                <label for="nickname">닉네임</label>
+                <input
+                    type="text"
+                    id="nickname"
+                    placeholder="닉네임을 입력해 주세요"
+                    maxlength="12"
+                    required
+                >
+
+                <label>프로필 아이콘 선택</label>
+
+                <div class="avatar-list" id="avatarList">
+                    <button type="button" class="avatar selected" data-avatar="🐱">🐱</button>
+                    <button type="button" class="avatar" data-avatar="🐰">🐰</button>
+                    <button type="button" class="avatar" data-avatar="🐶">🐶</button>
+                    <button type="button" class="avatar" data-avatar="🦊">🦊</button>
+                    <button type="button" class="avatar" data-avatar="🐻">🐻</button>
+                    <button type="button" class="avatar" data-avatar="🐼">🐼</button>
+                    <button type="button" class="avatar" data-avatar="🐸">🐸</button>
+                    <button type="button" class="avatar" data-avatar="🐹">🐹</button>
+                </div>
+
+                <button type="submit" class="enter-button">
+                    게임 입장하기
+                </button>
+
+                <p id="loginMessage" class="message"></p>
+
+            </form>
+        </div>
+    </main>
+
+
+    <!-- 오목 게임 화면 -->
+    <main id="gameScreen" class="game-container hidden">
+
+        <header class="game-header">
+            <h1>우리들의 오목</h1>
+            <p id="gameStatus">상대방을 기다리는 중...</p>
+        </header>
+
+        <section class="players">
+
+            <div class="player-card" id="blackPlayer">
+                <div class="player-avatar">⚫</div>
+                <div>
+                    <p class="player-name">흑돌</p>
+                    <span class="player-nickname">대기 중</span>
+                </div>
+            </div>
+
+            <div class="player-card" id="whitePlayer">
+                <div class="player-avatar">⚪</div>
+                <div>
+                    <p class="player-name">백돌</p>
+                    <span class="player-nickname">대기 중</span>
+                </div>
+            </div>
+
+        </section>
+
+        <div class="turn-message" id="turnMessage">
+            상대방을 기다리고 있어요.
+        </div>
+
+        <div class="board-wrapper">
+            <canvas id="omokBoard" width="600" height="600"></canvas>
+        </div>
+
+        <p class="board-guide">
+            자신의 차례에 오목판을 클릭해 돌을 놓으세요.
+        </p>
+
+        <p id="gameMessage" class="message"></p>
+
+    </main>
+
+    <script type="module" src="js/main.js"></script>
+
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>우리들의 오목</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- 로그인 화면 -->
+    <main id="loginScreen" class="login-container">
+
+        <div class="login-card">
+            <h1>우리들의 오목</h1>
+            <p class="subtitle">친구와 함께 즐기는 온라인 오목</p>
+
+            <form id="loginForm">
+
+                <label for="inviteCode">입장 비밀번호</label>
+                <input
+                    type="password"
+                    id="inviteCode"
+                    placeholder="친구와 공유한 초대 코드"
+                    minlength="20"
+                    required
+                >
+
+                <label for="nickname">닉네임</label>
+                <input
+                    type="text"
+                    id="nickname"
+                    placeholder="닉네임을 입력해 주세요"
+                    maxlength="12"
+                    required
+                >
+
+                <label>프로필 아이콘 선택</label>
+
+                <div class="avatar-list" id="avatarList">
+                    <button type="button" class="avatar selected" data-avatar="🐱">🐱</button>
+                    <button type="button" class="avatar" data-avatar="🐰">🐰</button>
+                    <button type="button" class="avatar" data-avatar="🐶">🐶</button>
+                    <button type="button" class="avatar" data-avatar="🦊">🦊</button>
+                    <button type="button" class="avatar" data-avatar="🐻">🐻</button>
+                    <button type="button" class="avatar" data-avatar="🐼">🐼</button>
+                    <button type="button" class="avatar" data-avatar="🐸">🐸</button>
+                    <button type="button" class="avatar" data-avatar="🐹">🐹</button>
+                </div>
+
+                <button type="submit" class="enter-button">
+                    게임 입장하기
+                </button>
+
+                <p id="loginMessage" class="message"></p>
+
+            </form>
+        </div>
+    </main>
+
+
+    <!-- 오목 게임 화면 -->
+    <main id="gameScreen" class="game-container hidden">
+
+        <header class="game-header">
+            <h1>우리들의 오목</h1>
+            <p id="gameStatus">상대방을 기다리는 중...</p>
+        </header>
+
+        <section class="players">
+
+            <div class="player-card" id="blackPlayer">
+                <div class="player-avatar">⚫</div>
+                <div>
+                    <p class="player-name">흑돌</p>
+                    <span class="player-nickname">대기 중</span>
+                </div>
+            </div>
+
+            <div class="player-card" id="whitePlayer">
+                <div class="player-avatar">⚪</div>
+                <div>
+                    <p class="player-name">백돌</p>
+                    <span class="player-nickname">대기 중</span>
+                </div>
+            </div>
+
+        </section>
+
+        <div class="turn-message" id="turnMessage">
+            상대방을 기다리고 있어요.
+        </div>
+
+        <div class="board-wrapper">
+            <canvas id="omokBoard" width="600" height="600"></canvas>
+        </div>
+
+        <p class="board-guide">
+            자신의 차례에 오목판을 클릭해 돌을 놓으세요.
+        </p>
+
+        <p id="gameMessage" class="message"></p>
+
+    </main>
+
+    <script type="module" src="js/main.js"></script>
+
+</body>
+</html>
